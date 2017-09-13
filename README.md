@@ -15,7 +15,8 @@ This was a pretty extensive project, and I definitely have to thank the followin
   * Initalize Vagrant via `vagrant up`, and set up on `localhost:5000`
   * Connect to the virtual machine: `vagrant ssh`
   * Run program: `project.py`
-  * (You can see all dependencies and requirements within the file: `requirements.txt`
+  * (You can see all dependencies and requirements within the file: `requirements.txt`)
+    *The biggest dependencies include: Flask, sqlalchemy, and oauth2client*
   
   ## Third Party Integration
   To access the add, edit, and delete screens - you will need to login using:
