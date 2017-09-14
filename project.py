@@ -33,9 +33,7 @@ session = DBSession()
 def login_required(f):
     """
     If user is signed in, continue with process. If not, send them to login.
-    """
-
-
+    """\
 @wraps(f)
 def decorated_function(*args, **kwargs):
     print(request.url)
@@ -117,10 +115,12 @@ def fbconnect():
     output += '<img src="'
     output += login_session['picture']
     output += ' " style = "width: 300px; height: 300px;border-radius: ' \
-              '150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
+              '150px;-webkit-border-radius: 150px;-moz-border-radius: '
+    '150px;"> '
 
-    flash("Now logged in as %s" % login_session['username'])
-    return output
+
+flash("Now logged in as %s" % login_session['username'])
+return output
 
 
 @app.route('/fbdisconnect')
@@ -314,9 +314,11 @@ def new_restaurant():
         return redirect('/login')
     if request.method == 'POST':
         new_restaurant_obj = Restaurant(
-            name=request.form['name'], user_id=login_session['user_id'])
+            name=request.form['name'],
+            user_id=login_session['user_id'])
         session.add(new_restaurant_obj)
-        flash('New Restaurant %s Successfully Created' % new_restaurant_obj.name)
+        flash('New Restaurant %s Successfully Created' %
+              new_restaurant_obj.name)
         session.commit()
         return redirect(url_for('show_restaurants'))
     else:
